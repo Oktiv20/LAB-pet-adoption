@@ -1,0 +1,23 @@
+#app {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#myBtnContainer {
+  /* display: flex; */
+  text-align: center;
+}
+
+header {
+  text-align: center;
+  background-color: lightgray;
+}
+
+footer {
+  text-align: center;
+}
+
+.card {
+  margin-bottom: 20px;
+}
