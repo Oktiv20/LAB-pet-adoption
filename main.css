@@ -3,11 +3,7 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 2%;
-}
-
-#myBtnContainer {
-  /* display: flex; */
-  text-align: center;
+  flex-direction: row;
 }
 
 .card-body {
@@ -16,7 +12,7 @@
 
 header {
   text-align: center;
-  background-color: rgba(8, 118, 229, 0.551);
+  background-color: lightgray;
   font-size: medium;
 }
 
@@ -30,10 +26,26 @@ footer {
   margin-bottom: 20px;
 }
 
-/* .container {
-  overflow: hidden;
-} */
+#menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-/* .btn {
-  background-color: gray;
-} */
+#cats-btn {
+  background-color: blue;
+}
+
+#dogs-btn {
+  background-color: greenyellow;
+}
+
+#dinos-btn {
+  background-color: orange;
+}
+
+.pet-type {
+  text-align: center;
+  background-color: lightblue;
+  margin: 0px 0px 0px 0px;
+}
