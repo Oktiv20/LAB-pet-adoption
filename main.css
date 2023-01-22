@@ -13,17 +13,18 @@
 header {
   text-align: center;
   background-color: lightgray;
-  font-size: medium;
+  font-size: larger;
+  height: 50px;
 }
 
-footer {
+/* footer {
   text-align: center;
   background-color: lightgray;
   box-sizing: border-box;
-}
+} */
 
 .card {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 #menu {
@@ -32,20 +33,32 @@ footer {
   justify-content: center;
 }
 
+#all-btn {
+  margin-right: 20px;
+}
+
 #cats-btn {
   background-color: blue;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 #dogs-btn {
   background-color: greenyellow;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 #dinos-btn {
   background-color: orange;
+  margin-left: 20px;
 }
 
 .pet-type {
   text-align: center;
+  font-size: larger;
   background-color: lightblue;
   margin: 0px 0px 0px 0px;
+  width: auto;
+  height: 40px;
 }

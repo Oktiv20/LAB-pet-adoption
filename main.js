@@ -282,13 +282,13 @@ const renderToDom = (divID, htmlToRender) => {
 const cardsOnDom = (arr) => {
   let domString = "";
   for (const pet of arr) {
-    domString += `<div class="card" style="width: 18rem;"> <header>${pet.name}</header> 
+    domString += `<div class="card" style="width: 18rem;" margin-bottom: 0;> <header>${pet.name}</header> 
       <img src=${pet.imageUrl} class="card-img-top" alt=${pet.name}>
       <div class="card-body">
         <h5 class="pet-color">${pet.color}</h5>
         <p class="pet-specialSkill">${pet.specialSkill}</p>
     </div>
-      <p class="pet-type" style="height: 40px;">${pet.type}</p>
+      <p class="pet-type">${pet.type}</p>
   </div>`;
   }
   
