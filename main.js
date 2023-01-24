@@ -274,11 +274,13 @@ const pets = [
   },
 ];
 
+// Render to DOM utility function
 const renderToDom = (divID, htmlToRender) => {
   const selectedDiv = document.querySelector(divID);
   selectedDiv.innerHTML = htmlToRender;
 };
 
+// get the cards on the DOM
 const cardsOnDom = (arr) => {
   let domString = "";
   for (const pet of arr) {
@@ -287,6 +289,7 @@ const cardsOnDom = (arr) => {
       <div class="card-body">
         <h5 class="pet-color">${pet.color}</h5>
         <p class="pet-specialSkill">${pet.specialSkill}</p>
+        <button class="btn btn-danger" id="delete--${pet.id}">Delete</button>
     </div>
       <p class="pet-type">${pet.type}</p>
   </div>`;
@@ -295,6 +298,7 @@ const cardsOnDom = (arr) => {
   renderToDom("#app", domString);
 };
 
+// function to filter animals by type
 const filter = (array, typeString) => {
   const animalArray = [];
 
@@ -306,19 +310,23 @@ const filter = (array, typeString) => {
   return animalArray;
 };
 
-// Code for Filter buttons 
+// Code for Filter buttons
+// 1. Target all of the buttons on the DOM 
 
 const catsButton = document.querySelector("#cats-btn");
 const dogsButton = document.querySelector("#dogs-btn");
 const dinosButton = document.querySelector("#dinos-btn");
 const showAllButton = document.querySelector("#all-btn");
 
+// 1. Get all the cards to render on the DOM
 cardsOnDom(pets);
 
+// 2. Add click event to show all the animals on button click using the function we created above
 showAllButton.addEventListener("click", () => {
   cardsOnDom(pets);
 });
 
+// 3. Add click event to filter all the animals by type on button click
 catsButton.addEventListener("click", () => {
   const allCats = filter(pets, "cat");
   cardsOnDom(allCats);
@@ -333,3 +341,72 @@ dinosButton.addEventListener("click", () => {
   const allDinos = filter(pets, "dino");
   cardsOnDom(allDinos);
 });
+
+
+//••••CREATE••••
+
+// 1. select/target the form on the DOM
+// const form = document.querySelector('form');
+
+// 2. create a function that grabs all the values from the form, pushes the new object to the array, then repaints the DOM with the new teammate
+const createPet = (e) => {
+  e.preventDefault(); // EVERY TIME YOU CREATE A FORM
+  const name = document.querySelector("name");
+  const color = document.querySelector("color");
+  const specialSkill = document.querySelector("specialSkill");
+  const type = document.querySelector("type");
+
+  const newPetObj = {
+    id: pets.length + 1,
+    name: document.querySelector("#name").value,
+    color: document.querySelector("#color").value,
+    specialSkill: document.querySelector("#specialSkill").value,
+    type: document.querySelector("#type").value,
+    image: document.querySelector("#image").value
+  };
+
+  pets.push(newPetObj);
+  
+  cardsOnDom(pets);
+};
+
+// 3. Add an event listener for the form submit and pass it the function (callback)
+
+const submitButton = document.querySelector("#form-submit");
+submitButton.addEventListener("click", createPet);
+
+
+// ••••DELETE••••
+
+// 1. Target the app div
+const appDiv = document.querySelector("#app");
+
+// 2. Add an event listener to capture clicks
+
+appDiv.addEventListener("click", (e) => {
+  console.log(e.target.id);
+  
+// 3. check e.target.id includes "delete"
+  if (e.target.id.includes("delete")) {
+    const [throwaway, petid] = e.target.id.split("--");
+    // destructuring: https://github.com/orgs/nss-evening-web-development/discussions/11
+
+// 4. add logic to remove from array
+    // .findIndex is an array method
+    const indexOfPet = pets.findIndex(e => e.id === Number(petid));
+
+    // .splice modifies the original array
+    pets.splice(indexOfPet, 1);
+
+// 5. Repaint the DOM with the updated array
+    cardsOnDom(pets);
+  }
+});
+
+const startApp = () => {
+  cardsOnDom(pets);
+}
+// events(); // ALWAYS LAST
+
+
+startApp();
