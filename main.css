@@ -17,12 +17,6 @@ header {
   height: 50px;
 }
 
-/* footer {
-  text-align: center;
-  background-color: lightgray;
-  box-sizing: border-box;
-} */
-
 .card {
   margin-bottom: 30px;
 }
@@ -61,4 +55,9 @@ header {
   margin: 0px 0px 0px 0px;
   width: auto;
   height: 40px;
+}
+
+.form-floating {
+  margin-left: 30px;
+  margin-right: 60px;
 }
