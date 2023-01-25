@@ -302,9 +302,9 @@ const cardsOnDom = (arr) => {
 const filter = (array, typeString) => {
   const animalArray = [];
 
-  for (const x of array) {
-    if (x.type === typeString) {
-      animalArray.push(x);
+  for (const animal of array) {
+    if (animal.type === typeString) {
+      animalArray.push(animal);
     }
   }
   return animalArray;
@@ -351,11 +351,8 @@ dinosButton.addEventListener("click", () => {
 // 2. create a function that grabs all the values from the form, pushes the new object to the array, then repaints the DOM with the new teammate
 const createPet = (e) => {
   e.preventDefault(); // EVERY TIME YOU CREATE A FORM
-  const name = document.querySelector("name");
-  const color = document.querySelector("color");
-  const specialSkill = document.querySelector("specialSkill");
-  const type = document.querySelector("type");
 
+  
   const newPetObj = {
     id: pets.length + 1,
     name: document.querySelector("#name").value,
@@ -364,9 +361,9 @@ const createPet = (e) => {
     type: document.querySelector("#type").value,
     image: document.querySelector("#image").value
   };
-
-  pets.push(newPetObj);
   
+  console.log(newPetObj);
+  pets.push(newPetObj);
   cardsOnDom(pets);
 };
 
@@ -374,7 +371,6 @@ const createPet = (e) => {
 
 const submitButton = document.querySelector("#form-submit");
 submitButton.addEventListener("click", createPet);
-
 
 // ••••DELETE••••
 
